@@ -77,10 +77,6 @@ jobs:
         chmod +x ../scripts/*.sh
         ../scripts/hook-feeds.sh
     
-    - name: MOD index file
-      run: |
-         cd $OPENWRTROOT/package/lean/autocore/files/arm
-         sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Telegram %></td><td><a href="https://t.me/DHDAXCW"><%:电报交流群%></a></td></tr>' index.htm
     - name: Install Feeds
       run: |
         cd $OPENWRTROOT
@@ -255,7 +251,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: ${{ steps.tag.outputs.release_date }} NanoPi-R4S formal edition_Docker版_全插件
+          name: ${{ steps.tag.outputs.release_date }} NanoPi-R4S with Docker
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.FIRMWARE }}/*
